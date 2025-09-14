@@ -24,18 +24,18 @@ spring:
               enabled: true
               lower-case-service-id: true
           routes:
-            - id: ms-producto
-              uri: lb://ms-producto
+            - id: ms-guia-producto
+              uri: lb://ms-guia-producto
               predicates:
                 - Path=/productos/**
 
-            - id: ms-cliente
-              uri: lb://ms-cliente
+            - id: ms-guia-cliente
+              uri: lb://ms-guia-cliente
               predicates:
                 - Path=/clientes/**
 
-            - id: ms-pedido
-              uri: lb://ms-pedido
+            - id: ms-guia-pedido
+              uri: lb://ms-guia-pedido
               predicates:
                 - Path=/pedidos/**
 
