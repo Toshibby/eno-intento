@@ -1,0 +1,42 @@
+server:
+  port: 9090
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka
+  instance:
+    hostname: localhost
+
+
+spring:
+  application:
+    name: ms-gateway
+
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
+          routes:
+            - id: ms-producto
+              uri: lb://ms-producto
+              predicates:
+                - Path=/productos/**
+
+            - id: ms-cliente
+              uri: lb://ms-cliente
+              predicates:
+                - Path=/clientes/**
+
+            - id: ms-pedido
+              uri: lb://ms-pedido
+              predicates:
+                - Path=/pedidos/**
+
+
